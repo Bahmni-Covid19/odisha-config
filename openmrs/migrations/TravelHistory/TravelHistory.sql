@@ -18,7 +18,7 @@ call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Visited hea
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Case identifiers","Case identifiers","Text","Misc",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, City visited (text)","City visited (text)","Text","Misc",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Country visited","Country visited","Text","Misc",false);
-call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Detailed location information contact with person","Location of exposure to sinfected person","Text","Misc",false);
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Detailed location information contact with person","Location of exposure to infected person","Text","Misc",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Detailed location information exposure to animal market","Location of exposure to animal market","Text","Misc",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"TH, Other, Contact setting","Other, Contact setting","Text","Misc",false);
 
