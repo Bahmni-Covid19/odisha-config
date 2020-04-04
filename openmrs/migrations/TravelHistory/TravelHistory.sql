@@ -36,4 +36,4 @@ VALUES
 INSERT INTO concept_description (concept_id,description,locale,creator,date_created,changed_by,date_changed,uuid)
 VALUES
 ((select concept_id from concept_name where name = "TH, Detailed location information exposure to animal market" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0),
- 'Location of the tumor','en',1,now(),NULL,NULL,uuid());
+ 'Capture Location/City/Country','en',1,now(),NULL,NULL,uuid());
