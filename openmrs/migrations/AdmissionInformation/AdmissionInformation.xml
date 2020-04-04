@@ -20,7 +20,7 @@
                 From
                 concept_reference_term
                 where `code` in
-                ("165794","DTO3 (DSME)","1640","165648","165647","1543","5088","5087","5242","5085","5086","162513","5092","5226","140238","140741","871","121","165501","158843","143264","141600","120749","139084","133473","142412","151","5622","117277","119481","6032","6033","165646","116031","121375","155569","119270","5016","117399","155","134377","145439")
+                ("165794","DTO3 (DSME)","1640","165648","165647","1543","5088","5087","5242","5085","5086","162513","5092","5226","140238","140741","871","121","165501","158843","143264","141600","120749","139084","133473","142412","151","5622","117277","119481","6032","6033","165646","116031","121375","155569","119270","5016","117399","155","134377","145439","165794","165657","162689","165851","1354")
                 and retired = 0
                 and concept_source_id = (
                 select concept_source_id from concept_reference_source where name = "CEIL"  and retired =0
@@ -30,136 +30,188 @@
 
         <comment>Adding codes to CEIL </comment>
         <sql>
-        SELECT concept_source_id INTO @source_id FROM concept_reference_source where name = "CEIL"
-        and retired =0;
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"165794",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Location of diagnosis","165794");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"DTO3 (DSME)",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Date of onset of symptoms","DTO3 (DSME)");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"1640",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, First date of Admission to hospital","1640");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"165648",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Date of isolation","165648");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"165647",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Was the patient ventilated?","165647");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"1543",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Date of death","1543");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5088",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Temperature","5088");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5087",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Pulse","5087");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5242",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Respiratory Rate","5242");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5085",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Systolic Blood Pressure","5085");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5086",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Diastolic Blood Pressure","5086");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"162513",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, Capillary Refill","162513");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5092",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("AI, SpO2","5092");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5226",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("General Weakness","5226");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"140238",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Fever","140238");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"140741",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Subjective Fever","140741");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"871",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Chills","871");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"121",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Myalgias","121");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"165501",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Runny Nose","165501");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"158843",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Sore Throat","158843");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"143264",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Cough","143264");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"141600",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Shortness of Breath","141600");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"120749",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Chest Pain","120749");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"139084",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Headache","139084");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"133473",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Vomiting","133473");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"142412",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Diarrhea","142412");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"151",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Abdominal Pain","151");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5622",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Other","5622");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"117277",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Immunocompromise","117277");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"119481",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Diabetes","119481");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"6032",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Liver Disease","6032");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"6033",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Renal Disease","6033");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"165646",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Chronic Neuro Disease","165646");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"116031",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Cancer","116031");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"121375",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Asthma","121375");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"155569",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Chronic Lung Dz","155569");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"119270",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Cardiovascular Disease","119270");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"5016",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Cardiomyopathy","5016");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"117399",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Hypertension","117399");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"155",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Epilepsy","155");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"134377",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Mental Health Disorder","134377");
-        INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
-        (4,"145439",@source_id,uuid(),now());
-        call CREATE_REFERENCE_MAPPING_CEIL("Misc Chronic Disease","145439");
+            SELECT concept_source_id INTO @source_id FROM concept_reference_source where name = "CEIL"
+            and retired =0;
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165794",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Location of diagnosis","165794");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"DTO3 (DSME)",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Date of onset of symptoms","DTO3 (DSME)");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"1640",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, First date of Admission to hospital","1640");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165648",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Date of isolation","165648");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165647",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Was the patient ventilated?","165647");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"1543",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Date of death","1543");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5088",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Temperature","5088");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5087",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Pulse","5087");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5242",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Respiratory Rate","5242");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5085",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Systolic Blood Pressure","5085");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5086",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Diastolic Blood Pressure","5086");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"162513",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, Capillary Refill","162513");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5092",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("AI, SpO2","5092");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5226",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("General Weakness","5226");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"140238",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Fever","140238");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"140741",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Subjective Fever","140741");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"871",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Chills","871");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"121",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Myalgias","121");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165501",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Runny Nose","165501");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"158843",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Sore Throat","158843");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"143264",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Cough","143264");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"141600",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Shortness of Breath","141600");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"120749",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Chest Pain","120749");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"139084",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Headache","139084");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"133473",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Vomiting","133473");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"142412",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Diarrhea","142412");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"151",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Abdominal Pain","151");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5622",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Other","5622");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"117277",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Immunocompromise","117277");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"119481",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Diabetes","119481");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"6032",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Liver Disease","6032");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"6033",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Renal Disease","6033");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165646",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Chronic Neuro Disease","165646");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"116031",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Cancer","116031");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"121375",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Asthma","121375");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"155569",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Chronic Lung Dz","155569");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"119270",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Cardiovascular Disease","119270");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"5016",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Cardiomyopathy","5016");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"117399",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Hypertension","117399");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"155",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Epilepsy","155");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"134377",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Mental Health Disorder","134377");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"145439",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Misc Chronic Disease","145439");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165794",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Location of diagnosis","165794");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165657",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Country","165657");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"162689",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Province","162689");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"165851",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("District","165851");
+            INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+            (4,"1354",@source_id,uuid(),now());
+            call CREATE_REFERENCE_MAPPING_CEIL("Village","1354");
+
         </sql>
-        </changeSet>
+    </changeSet>
+
+        <changeSet id="Odisha_CONFIG_2020040410598" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Concept set with Country","Province","District","Village")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "Location of diagnosis");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Location of diagnosis</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "Location of diagnosis" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            set @child4_concept_id = 0;
+
+            select concept_id into @child1_concept_id from concept_name where name ="Country" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="Province" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="District" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child4_concept_id from concept_name where name ="Village" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+
+            call add_concept_set_members(@concept_id, @child1_concept_id, 1);
+            call add_concept_set_members(@concept_id, @child2_concept_id, 2);
+            call add_concept_set_members(@concept_id, @child3_concept_id, 3);
+            call add_concept_set_members(@concept_id, @child4_concept_id, 4);
+        </sql>
+    </changeSet>
 
         <changeSet id="Odisha_CONFIG_2020040319417" author="SreeKalyan">
         <preConditions onFail="MARK_RAN">

@@ -57,7 +57,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="Malawi_CONFIG_2020040407404" author="SreeKalyan">
+    <changeSet id="Odisha_CONFIG_2020040407404" author="SreeKalyan">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from concept_answer ca
@@ -87,7 +87,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="Malawi_CONFIG_2020040407409" author="SreeKalyan">
+    <changeSet id="Odisha_CONFIG_2020040407409" author="SreeKalyan">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from concept_answer ca
@@ -117,7 +117,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="Malawi_CONFIG_2020040407460" author="SreeKalyan">
+    <changeSet id="Odisha_CONFIG_2020040407460" author="SreeKalyan">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from concept_answer ca
@@ -147,7 +147,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="Malawi_CONFIG_2020040407479" author="SreeKalyan">
+    <changeSet id="Odisha_CONFIG_2020040407479" author="SreeKalyan">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from concept_answer ca

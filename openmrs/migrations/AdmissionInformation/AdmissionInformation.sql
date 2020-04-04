@@ -4,6 +4,9 @@ set @concept_full_id = 0;
 set @count = 0;
 set @uuid = NULL;
 
+#Add Concept set
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Location of diagnosis","Location of diagnosis","N/A","Misc",true);
+
 # Add coded values
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"AI, Admission to hospital","Admission to hospital","Coded","Question",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"AI, Current Health Problems","Current Health Problems","Coded","Question",false);
@@ -84,3 +87,10 @@ call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Subjective Feve
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Unknown","Unknown","N/A","Misc",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Vomiting","Vomiting","N/A","Misc",false);
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Yes","Yes","N/A","Misc",false);
+
+
+#Add concetps
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Country","Country","Text","Misc",false);
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Province","Province","Text","Misc",false);
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"District","District","Text","Misc",false);
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Village","Village","Text","Misc",false);
