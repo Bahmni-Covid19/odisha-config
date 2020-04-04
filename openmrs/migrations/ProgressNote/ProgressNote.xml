@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="Odisha_CONFIG_202003290749" author="Sreekalyan">
+        <comment>Adding Concepts for Complications Form</comment>
+        <sqlFile path="ProgressNote/ProgressNote.sql"/>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040407562" author="SreeKalyan">
+    <preConditions onFail="MARK_RAN">
+        <sqlCheck expectedResult="0">
+            select
+            count(*)
+            From
+            concept_reference_term
+            where `code` in
+            ("162869")
+            and retired = 0
+            and concept_source_id = (
+            select concept_source_id from concept_reference_source where name = "CEIL"  and retired =0
+            );
+        </sqlCheck>
+    </preConditions>
+
+    <comment>Adding codes to CEIL </comment>
+    <sql>
+    SELECT concept_source_id INTO @source_id FROM concept_reference_source where name = "CEIL"
+    and retired =0;
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"162869",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Date recorded","162869");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Temperature","5088");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Pulse","5087");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Respiratory Rate","5242");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Systolic Blood Pressure","5085");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Diastolic Blood Pressure","5086");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, Capillary Refill","162513");
+    call CREATE_REFERENCE_MAPPING_CEIL("PN, SpO2","5092");
+    </sql>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040408011" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("General Weakness","Fever","Subjective Fever","Chills","Muscle Aches","Myalgias","Runny Nose","Sore Throat","Cough","Shortness of Breath","Chest Pain","Headache","Nausea","Vomiting","Diarrhea","Abdominal Pain","Other")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "PN, Patient symptoms");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Patient symptoms</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "PN, Patient symptoms" and concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            set @child4_concept_id = 0;
+            set @child5_concept_id = 0;
+            set @child6_concept_id = 0;
+            set @child7_concept_id = 0;
+            set @child8_concept_id = 0;
+            set @child9_concept_id = 0;
+            set @child10_concept_id = 0;
+            set @child11_concept_id = 0;
+            set @child12_concept_id = 0;
+            set @child13_concept_id = 0;
+            set @child14_concept_id = 0;
+            set @child15_concept_id = 0;
+            set @child16_concept_id = 0;
+            set @child17_concept_id = 0;
+
+            select concept_id into @child1_concept_id from concept_name where name ="General Weakness" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="Fever" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Subjective Fever" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child4_concept_id from concept_name where name ="Chills" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child5_concept_id from concept_name where name ="Muscle Aches" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child6_concept_id from concept_name where name ="Myalgias" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child7_concept_id from concept_name where name ="Runny Nose" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child8_concept_id from concept_name where name ="Sore Throat" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child9_concept_id from concept_name where name ="Cough" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child10_concept_id from concept_name where name ="Shortness of Breath" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child11_concept_id from concept_name where name ="Chest Pain" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child12_concept_id from concept_name where name ="Headache" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child13_concept_id from concept_name where name ="Nausea" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child14_concept_id from concept_name where name ="Vomiting" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child15_concept_id from concept_name where name ="Diarrhea" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child16_concept_id from concept_name where name ="Abdominal Pain" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child17_concept_id from concept_name where name ="Other" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+            call add_concept_answer(@concept_id, @child4_concept_id, 4);
+            call add_concept_answer(@concept_id, @child5_concept_id, 5);
+            call add_concept_answer(@concept_id, @child6_concept_id, 6);
+            call add_concept_answer(@concept_id, @child7_concept_id, 7);
+            call add_concept_answer(@concept_id, @child8_concept_id, 8);
+            call add_concept_answer(@concept_id, @child9_concept_id, 9);
+            call add_concept_answer(@concept_id, @child10_concept_id, 10);
+            call add_concept_answer(@concept_id, @child11_concept_id, 11);
+            call add_concept_answer(@concept_id, @child12_concept_id, 12);
+            call add_concept_answer(@concept_id, @child13_concept_id, 13);
+            call add_concept_answer(@concept_id, @child14_concept_id, 14);
+            call add_concept_answer(@concept_id, @child15_concept_id, 15);
+            call add_concept_answer(@concept_id, @child16_concept_id, 16);
+            call add_concept_answer(@concept_id, @child17_concept_id, 17);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

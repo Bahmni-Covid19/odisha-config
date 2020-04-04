@@ -85,4 +85,59 @@
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @location_tag_id);
         </sql>
     </changeSet>
+
+    <changeSet id="Odisha-20200201214" author="Sreekalyan" runAlways="true">
+        <comment>Stored Procedure to add reference term</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_concept_answer;
+        </sql>
+        <sqlFile path="utils/add_concept_answer.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="Odisha-20200201215" author="Sreekalyan" runAlways="true">
+        <comment>Stored Procedure to add reference term</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_concept_description;
+        </sql>
+        <sqlFile path="utils/add_concept_description.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="Odisha-20200201216" author="Sreekalyan" runAlways="true">
+        <comment>Stored Procedure to add reference term</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_concept_numeric;
+        </sql>
+        <sqlFile path="utils/add_concept_numeric.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="Odisha-20200201217" author="Sreekalyan" runAlways="true">
+        <comment>Stored Procedure to add reference term</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_concept_reference_map;
+        </sql>
+        <sqlFile path="utils/add_concept_reference_map.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="Odisha-20200201218" author="Sreekalyan" runAlways="true">
+        <comment>Stored Procedure to add reference term</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_concept_set_members;
+        </sql>
+        <sqlFile path="utils/add_concept_set_members.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="Odisha-20200201219" author="Sreekalyan" runAlways="true">
+        <comment>Stored Procedure to add reference term</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_concept;
+        </sql>
+        <sqlFile path="utils/add_concept.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="Odisha-20200201220" author="Sreekalyan" runAlways="true">
+        <sql>
+            DROP PROCEDURE IF EXISTS CREATE_REFERENCE_MAPPING_CEIL;
+        </sql>
+        <sqlFile path="utils/createProcedureForCEIL.sql" endDelimiter="#"/>
+    </changeSet>
+
+    <include file ="AdmissionInformation/AdmissionInformation.xml"/>
+    <include file ="TravelHistory/TravelHistory.xml"/>
+    <include file ="ProgressNote/ProgressNote.xml"/>
+    <include file ="DischargeNote/DischargeNote.xml"/>
+
 </databaseChangeLog>

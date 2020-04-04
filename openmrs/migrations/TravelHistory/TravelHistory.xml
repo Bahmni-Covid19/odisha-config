@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="Odisha_CONFIG_202003291213" author="Sreekalyan">
+        <comment>Adding Concepts for Complications Form</comment>
+        <sqlFile path="TravelHistory/TravelHistory.sql"/>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040407373" author="SreeKalyan">
+    <preConditions onFail="MARK_RAN">
+        <sqlCheck expectedResult="0">
+            select
+            count(*)
+            From
+            concept_reference_term
+            where `code` in
+            ("165656","162604","165645","165833","165850","159942","165844")
+            and retired = 0
+            and concept_source_id = (
+            select concept_source_id from concept_reference_source where name = "CEIL"  and retired =0
+            );
+        </sqlCheck>
+    </preConditions>
+
+    <comment>Adding codes to CEIL </comment>
+        <sql>
+    SELECT concept_source_id INTO @source_id FROM concept_reference_source where name = "CEIL"
+    and retired =0;
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"165656",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, History of recent travel in past 14 days","165656");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"162604",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, Country visited","162604");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"165645",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, City visited (text)","165645");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"165833",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, Visited health facility in past two weeks","165833");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"165850",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, Close contact with person with acute respiratory infection 14 days prior to developing symptoms","165850");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"159942",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, Detailed location information contact with person","159942");
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, TH, Detailed location information exposure to animal market","159942");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"165844",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("TH, Recent exposure to live animal market","165844");
+        </sql>
+    </changeSet>
+
+    <changeSet id="Malawi_CONFIG_2020040407404" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Yes","No","Unknown")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "TH, History of recent travel in past 14 days");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to History of recent travel in past 14 days</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "TH, History of recent travel in past 14 days" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            select concept_id into @child1_concept_id from concept_name where name ="Yes" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="No" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Unknown" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+    <changeSet id="Malawi_CONFIG_2020040407409" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Yes","No","Unknown")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "TH, Visited health facility in past two weeks");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Visited health facility in past two weeks</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "TH, Visited health facility in past two weeks" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            select concept_id into @child1_concept_id from concept_name where name ="Yes" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="No" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Unknown" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+    <changeSet id="Malawi_CONFIG_2020040407460" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Yes","No","Unknown")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "TH, Close contact with person with acute respiratory infection 14 days prior to developing symptoms");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Close contact with person with acute respiratory infection 14 days prior to developing symptoms</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "TH, Close contact with person with acute respiratory infection 14 days prior to developing symptoms" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            select concept_id into @child1_concept_id from concept_name where name ="Yes" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="No" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Unknown" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+    <changeSet id="Malawi_CONFIG_2020040407479" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Yes","No","Unknown")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "TH, Recent exposure to live animal market");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Recent exposure to live animal market</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "TH, Recent exposure to live animal market" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            select concept_id into @child1_concept_id from concept_name where name ="Yes" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="No" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Unknown" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

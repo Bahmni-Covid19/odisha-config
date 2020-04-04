@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="Odisha_CONFIG_202003291138" author="Sreekalyan">
+        <comment>Adding Concepts for Complications Form</comment>
+        <sqlFile path="DischargeNote/DischargeNote.sql"/>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040408095" author="SreeKalyan">
+    <preConditions onFail="MARK_RAN">
+        <sqlCheck expectedResult="0">
+            select
+            count(*)
+            From
+            concept_reference_term
+            where `code` in
+            ("165644","163204","1641","1641","1695")
+            and retired = 0
+            and concept_source_id = (
+            select concept_source_id from concept_reference_source where name = "CEIL"  and retired =0
+            );
+        </sqlCheck>
+    </preConditions>
+
+    <comment>Adding codes to CEIL </comment>
+    <sql>
+    SELECT concept_source_id INTO @source_id FROM concept_reference_source where name = "CEIL"
+    and retired =0;
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"165644",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("History of admission to intensive care unit (ICU)","165644");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"163204",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("Days in intensive care unit","163204");
+    call CREATE_REFERENCE_MAPPING_CEIL("Date of admission to ICU","1640");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"1641",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("Date of discharge from ICU","1641");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"1641",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("Date of discharge (hospital)","1641");
+    INSERT INTO concept_reference_term (creator,code,concept_source_id,uuid,date_created) VALUES
+    (4,"1695",@source_id,uuid(),now());
+    call CREATE_REFERENCE_MAPPING_CEIL("Discharge condition","1695");
+    </sql>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040408116" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Yes","No","Unknown")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "DN, History of admission to intensive care unit (ICU)");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to History of admission to intensive care unit (ICU)</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "DN, History of admission to intensive care unit (ICU)" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+
+            select concept_id into @child1_concept_id from concept_name where name ="Yes" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="No" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Unknown" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040408123" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Good","Fair","Poor")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "DN, Discharge condition");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Discharge condition</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "DN, Discharge condition" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+
+            select concept_id into @child1_concept_id from concept_name where name ="Good" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="Fair" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Poor" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040408145" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Oxygen therapy","Intropes","Vasopressors","Non-invasive Ventilation","Other")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "DN, Therapy given");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Therapy given</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "DN, Therapy given" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+            set @child4_concept_id = 0;
+            set @child5_concept_id = 0;
+            select concept_id into @child1_concept_id from concept_name where name ="Oxygen therapy" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="Intropes" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Vasopressors" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child4_concept_id from concept_name where name ="Non-invasive Ventilation" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child5_concept_id from concept_name where name ="Other" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+            call add_concept_answer(@concept_id, @child4_concept_id, 4);
+            call add_concept_answer(@concept_id, @child5_concept_id, 5);
+        </sql>
+    </changeSet>
+
+    <changeSet id="Odisha_CONFIG_2020040408156" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_answer ca
+                join
+                concept_name cn
+                on ca.concept_id = cn.concept_id
+                where ca.answer_concept IN (select concept_id from concept_name where name IN
+                ("Transfer to other facility","Death","Discharged")
+                and concept_name_type = "FULLY_SPECIFIED")
+                AND
+                cn.concept_id IN (select concept_id from concept_name where name = "DN, Disposition");
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Disposition</comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = "DN, Disposition" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = "en" and voided = 0;
+
+            set @child1_concept_id = 0;
+            set @child2_concept_id = 0;
+            set @child3_concept_id = 0;
+
+            select concept_id into @child1_concept_id from concept_name where name ="Transfer to other facility" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child2_concept_id from concept_name where name ="Death" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+            select concept_id into @child3_concept_id from concept_name where name ="Discharged" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'en' and voided = 0;
+
+            call add_concept_answer(@concept_id, @child1_concept_id, 1);
+            call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            call add_concept_answer(@concept_id, @child3_concept_id, 3);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
