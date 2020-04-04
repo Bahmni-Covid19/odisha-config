@@ -49,6 +49,16 @@
     "order": 7,
     "requiredPrivilege": "app:admin"
   },
+    "radiologyDocumentUpload": {
+    "id": "bahmni.radiology.document.upload",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_RADIOLOGY_UPLOAD_KEY",
+    "url": "../document-upload/?encounterType=RADIOLOGY&topLevelConcept=Radiology",
+    "icon": "icon-bahmni-radiology",
+    "order": 8,
+    "requiredPrivilege": "app:radiology-upload"
+  },
   "implementerInterface": {
     "id": "bahmni.implementer.interface",
     "extensionPointId": "org.bahmni.home.dashboard",
