@@ -12,8 +12,8 @@ call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Therapy giv
 
 #Add Date Concepts
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Admission Date-Time","Admission Date-Time","Date","Misc",false);
-call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Date of discharge from ICU","DISCHARGE DATE-TIME","Date","Misc",false);
-call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Date of discharge (hospital)","DISCHARGE DATE-TIME","Date","Misc",false);
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Date of discharge from ICU","ICU-DISCHARGE DATE-TIME","Date","Misc",false);
+call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Date of discharge (hospital)","Hospital-DISCHARGE DATE-TIME","Date","Misc",false);
 
 #Add text concepts
 call add_concept(@concept_id,@concept_short_id,@concept_full_id,"DN, Other comments","Other comments","Text","Misc",false);
