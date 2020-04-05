@@ -27,8 +27,6 @@
                     "home",
                     "visit",
                     "registration",
-                    "inpatient",
-                    "enrolment",
                     "visitAttribute"
                 ]
             },
@@ -301,30 +299,7 @@
     "trends":{  
         "translationKey":"DASHBOARD_TAB_TRENDS_KEY",
         "maxRecentlyViewedPatients":10,
-        "sections":{  
-            "patientInformation":{  
-                "translationKey":"DASHBOARD_TITLE_PATIENT_INFORMATION_KEY",
-                "type":"patientInformation",
-                "patientAttributes":[  
-                    "caste",
-                    "class",
-                    "education",
-                    "occupation",
-                    "debt",
-                    "distanceFromCenter",
-                    "isUrban",
-                    "cluster",
-                    "RationCard",
-                    "familyIncome"
-                ],
-                "addressFields":[  
-                    "address1",
-                    "address2",
-                    "cityVillage",
-                    "countyDistrict"
-                ],
-                "displayOrder":0
-            },
+        "sections":{
             "Temperature": {
                 "type": "observationGraph",
                 "translationKey": "DASHBOARD_TITLE_TEMPERATURE",
