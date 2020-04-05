@@ -32,18 +32,42 @@
                     "visitAttribute"
                 ]
             },
+            "treatments":{
+                "translationKey":"DASHBOARD_TITLE_TREATMENTS_KEY",
+                "type":"treatment",
+                "displayOrder":4,
+                "dashboardConfig":{
+                    "showFlowSheet":true,
+                    "showListView":true,
+                    "showRoute":true,
+                    "showDrugForm":true,
+                    "numberOfVisits":5,
+                    "showOtherActive":true,
+                    "showDetailsButton":true
+                },
+                "expandedViewConfig":{
+                    "translationKey":"DASHBOARD_TITLE_TREATMENTS_KEY",
+                    "showFlowSheet":true,
+                    "showListView":true,
+                    "showRoute":true,
+                    "showDrugForm":true,
+                    "numberOfVisits":10,
+                    "showOtherActive":true,
+                    "showDetailsButton":true
+                }
+            },
             "radiology": {
                 "translationKey": "DASHBOARD_TITLE_RADIOLOGY_KEY",
                 "type": "radiology",
                 "showDetailsButton": true,
-                "displayOrder": 7
+                "displayOrder": 5
             },
 
             "Admission Information": {
                 "translationKey": "DASHBOARD_TITLE_ADMISSION_INFORMATION",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 4,
+                "displayOrder": 6,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -111,7 +135,7 @@
                 "translationKey": "DASHBOARD_TITLE_DISCHARGE_NOTE",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 5,
+                "displayOrder": 7,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -157,7 +181,7 @@
                 "translationKey": "DASHBOARD_TITLE_PROGRESS_NOTE",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 6,
+                "displayOrder": 8,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -197,7 +221,7 @@
                 "translationKey": "DASHBOARD_TITLE_TRAVEL_HISTORY",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 7,
+                "displayOrder": 9,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
