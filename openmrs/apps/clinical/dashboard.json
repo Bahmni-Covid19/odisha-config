@@ -325,103 +325,98 @@
                 ],
                 "displayOrder":0
             },
-            "growthChart":{  
-                "type":"observationGraph",
-                "translationKey": "DASHBOARD_TITLE_GROWTH_CHART",
-                "config":{  
-                    "yAxisConcepts":[  
-                        "Weight"
+            "Temperature": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_TEMPERATURE",
+                "config": {
+                    "yAxisConcepts": [
+                        "AI, Temperature",
+                        "PN, Temperature"
                     ],
-                    "referenceData":"growthChartReference.csv",
-                    "numberOfVisits":20
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
                 },
-                "displayOrder":1
+                "displayOrder": 1
             },
-            "BP":{  
-                "type":"observationGraph",
-                "translationKey": "DASHBOARD_TITLE_BLOOD_PRESSURE",
-                "config":{  
-                    "yAxisConcepts":[  
-                        "Systolic Data",
-                        "Diastolic Data"
+            "observationGraph": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_PULSE",
+                "config": {
+                    "yAxisConcepts": [
+                        "AI, Pulse",
+                        "PN, Pulse"
                     ],
-                    "xAxisConcept":"observationDateTime",
-                    "numberOfVisits":10
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
                 },
-                "displayOrder":2
+                "displayOrder": 2
             },
-            "weight/BMI":{  
-                "type":"observationGraph",
-                "translationKey": "DASHBOARD_TITLE_WEIGHT_BMI",
-                "config":{  
-                    "yAxisConcepts":[  
-                        "Weight",
-                        "BMI"
+            "Respiratory Rate": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_RR",
+                "config": {
+                    "yAxisConcepts": [
+                        "AI, Respiratory Rate",
+                        "PN, Respiratory Rate"
                     ],
-                    "xAxisConcept":"observationDateTime",
-                    "numberOfVisits":10
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
                 },
-                "displayOrder":3
+                "displayOrder": 3
             },
-            "diabetes/BloodSugar":{  
+            "BP Admission":{
                 "type":"observationGraph",
-                "translationKey": "DASHBOARD_TITLE_DIABETES_BLOOD_SUGAR",
-                "config":{  
-                    "yAxisConcepts":[  
-                        "Blood Sugar Fasting",
-                        "Blood Sugar P.P"
+                "translationKey": "DASHBOARD_TITLE_BLOOD_PRESSURE_AI",
+                "config":{
+                    "yAxisConcepts":[
+                        "AI, Systolic Blood Pressure",
+                        "AI, Diastolic Blood Pressure"
                     ],
                     "xAxisConcept":"observationDateTime",
                     "numberOfVisits":10
                 },
                 "displayOrder":4
             },
-            "observationGraph":{  
+            "BP Progress": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_BLOOD_PRESSURE_PN",
+                "config": {
+                    "yAxisConcepts": [
+                        "PN, Systolic Blood Pressure",
+                        "PN, Diastolic Blood Pressure"
+                    ],
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
+                },
+                "displayOrder": 5
+            },
+            "Capillary Refill": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_CAPILLARY_REFILL",
+                "config": {
+                    "yAxisConcepts": [
+                        "AI, Capillary Refill",
+                        "PN, Capillary Refill"
+                    ],
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
+                },
+                "displayOrder":6
+            },
+            "SpO2":{
                 "type":"observationGraph",
-                "translationKey": "DASHBOARD_TITLE_PULSE",
-                "config":{  
-                    "yAxisConcepts":[  
-                        "Pulse Data"
+                "translationKey": "DASHBOARD_TITLE_SpO2",
+                "config":{
+                    "yAxisConcepts":[
+                        "AI, SpO2",
+                        "PN, SpO2"
                     ],
                     "xAxisConcept":"observationDateTime",
                     "numberOfVisits":10
                 },
-                "displayOrder":5
-            },
-            "diabetes":{  
-                "title":"Diabetes",
-                "templateName":"Diabetes, Progress",
-                "type":"diseaseTemplate",
-                "dashboardConfig":{  
-                    "showOnly":[  
-
-                    ]
-                },
-                "expandedViewConfig":{  
-                    "showDetailsButton":true,
-                    "pivotTable":{  
-                        "numberOfVisits":"10",
-                        "groupBy":"visits",
-                        "obsConcepts":[  
-                            "Diabetes, Blood Pressure",
-                            "Diabetes, A1C",
-                            "Diabetes, LDL",
-                            "Diabetes, Ulcers on Feet",
-                            "Blood Sugar Fasting",
-                            "Blood Sugar PP"
-                        ],
-                        "labConcepts":[  
-                            "RBS",
-                            "FBS",
-                            "PP2BS",
-                            "Hb1AC",
-                            "Creatinine",
-                            "Cholesterol"
-                        ]
-                    }
-                },
-                "displayOrder":6
+                "displayOrder":7
             }
+
         }
     }
 }
