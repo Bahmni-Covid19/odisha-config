@@ -18,14 +18,7 @@
                     "countyDistrict"
                 ]
             },
-            "diagnosis": {
-                "translationKey": "DASHBOARD_TITLE_DIAGNOSIS_KEY",
-                "type": "diagnosis",
-                "showCertainty": true,
-                "showOrder": true,
-                "showDetailsButton": true,
-                "displayOrder": 1
-            },
+
             "navigationLinksControl": {
                 "translationKey": "DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY",
                 "type": "navigationLinksControl",
@@ -50,7 +43,7 @@
                 "translationKey": "DASHBOARD_TITLE_ADMISSION_INFORMATION",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 3,
+                "displayOrder": 4,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -63,7 +56,21 @@
                         "AI, Admission to hospital",
                         "AI, Date of Admission",
                         "AI, Name of Hospital",
-                        "AI, Date of isolation"
+                        "AI, Date of isolation",
+                        "AI, History of mechanical ventilation",
+                        "AI, Patient health status",
+                        "AI, Date of death",
+                        "AI, Patient symptoms",
+                        "AI, Symptoms, Other",
+                        "AI, Temperature",
+                        "AI, Pulse",
+                        "AI, Respiratory Rate",
+                        "AI, Systolic Blood Pressure",
+                        "AI, Diastolic Blood Pressure",
+                        "AI, Capillary Refill",
+                        "AI, SpO2",
+                        "AI, Current Health Problems",
+                        "AI, Others, Current health problems"
                     ],
                     "scope": "latest",
                     "showGroupDateTime": false
@@ -94,9 +101,8 @@
                         "AI, Current Health Problems",
                         "AI, Others, Current health problems"
                     ],
-                    "scope": "latest",
+                    "numberOfVisits":" ",
                     "isEditable": true,
-                    "numberOfVisits": 3,
                     "showDetailsButton": true,
                     "pivotTable": {}
                 }
@@ -105,7 +111,7 @@
                 "translationKey": "DASHBOARD_TITLE_DISCHARGE_NOTE",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 4,
+                "displayOrder": 5,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -114,7 +120,14 @@
                         "DN, Days in intensive care unit",
                         "DN, Admission Date-Time",
                         "DN, Date of discharge from ICU",
-                        "DN, Therapy given"
+                        "DN, Therapy given",
+                        "DN, Other, Therapy given",
+                        "DN, Date of discharge (hospital)",
+                        "DN, Disposition",
+                        "DN, Cause of death",
+                        "DN, Date of death",
+                        "DN, Discharge condition",
+                        "DN, Other comments"
                     ],
                     "scope": "latest",
                     "showGroupDateTime": false
@@ -134,9 +147,8 @@
                         "DN, Discharge condition",
                         "DN, Other comments"
                     ],
-                    "scope": "latest",
+                    "numberOfVisits":" ",
                     "isEditable": true,
-                    "numberOfVisits": 3,
                     "showDetailsButton": true,
                     "pivotTable": {}
                 }
@@ -145,7 +157,7 @@
                 "translationKey": "DASHBOARD_TITLE_PROGRESS_NOTE",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 5,
+                "displayOrder": 6,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -153,7 +165,12 @@
                         "PN, Date recorded",
                         "PN, Temperature",
                         "PN, Pulse",
-                        "PN, Respiratory Rate"
+                        "PN, Respiratory Rate",
+                        "PN, Systolic Blood Pressure",
+                        "PN, Diastolic Blood Pressure",
+                        "PN, Capillary Refill",
+                        "PN, Patient symptoms",
+                        "PN, Symptoms, Other"
                     ],
                     "scope": "latest",
                     "showGroupDateTime": false
@@ -170,9 +187,8 @@
                         "PN, Patient symptoms",
                         "PN, Symptoms, Other"
                     ],
-                    "scope": "latest",
+                    "numberOfVisits":" ",
                     "isEditable": true,
-                    "numberOfVisits": 3,
                     "showDetailsButton": true,
                     "pivotTable": {}
                 }
@@ -181,7 +197,7 @@
                 "translationKey": "DASHBOARD_TITLE_TRAVEL_HISTORY",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 6,
+                "displayOrder": 7,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "isEditable": true,
@@ -189,7 +205,17 @@
                         "TH, History of recent travel in past 14 days",
                         "TH, Country visited",
                         "TH, City visited (text)",
-                        "TH, Visited health facility in past two weeks"
+                        "TH, Visited health facility in past two weeks",
+                        "TH, Close contact with person with acute respiratory infection 14 days prior to developing symptoms",
+                        "TH, Contact setting",
+                        "TH, Other, Contact setting",
+                        "TH, Has the patient had contact with a probable or confirmed case in the 14 days prior to symptom onset? :",
+                        "TH, Detailed location information contact with person",
+                        "TH, Case identifiers",
+                        "TH, Case Identifier contact setting",
+                        "TH, Case Identifier contact setting, Others",
+                        "TH, Recent exposure to live animal market",
+                        "TH, Detailed location information exposure to animal market"
                     ],
                     "scope": "latest",
                     "showGroupDateTime": false
@@ -211,9 +237,8 @@
                         "TH, Recent exposure to live animal market",
                         "TH, Detailed location information exposure to animal market"
                     ],
-                    "scope": "latest",
+                    "numberOfVisits":" ",
                     "isEditable": true,
-                    "numberOfVisits": 3,
                     "showDetailsButton": true,
                     "pivotTable": {}
                 }
@@ -231,7 +256,7 @@
             },
             "validationForms-2.0": {
                 "type": "formsV2",
-                "displayOrder": 2,
+                "displayOrder": 3,
                 "dashboardConfig": {
                     "title": null,
                     "maximumNoOfVisits": 5
